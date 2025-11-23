@@ -4,12 +4,12 @@ FROM golang:1.24-alpine AS builder
 WORKDIR /app
 COPY . .
 
-RUN CGO_ENABLED=0 GOOS=linux go build -o oauth-demo main.go
+RUN CGO_ENABLED=0 GOOS=linux go build -o oauth2-demo main.go
 
 # Runtime stage
 FROM alpine:3.20
 WORKDIR /app
-COPY --from=builder /app/oauth-demo /usr/local/bin/oauth-demo
+COPY --from=builder /app/oauth2-demo /usr/local/bin/oauth2-demo
 
 EXPOSE 8080
-ENTRYPOINT ["/usr/local/bin/oauth-demo"]
+ENTRYPOINT ["/usr/local/bin/oauth2-demo"]

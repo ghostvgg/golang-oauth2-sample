@@ -1,0 +1,11 @@
+version: "3.9"
+
+services:
+  oauth:
+    build:
+      context: ./oauth2-demo
+      dockerfile: Dockerfile
+    container_name: oauth2-demo
+    ports:
+      - "8080:8080"
+    restart: always
